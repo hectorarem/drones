@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Drone, Medication
+from .models import Drone, Medication, BatteryLogs
 
 
 class DroneSerializer(serializers.ModelSerializer):
@@ -29,3 +29,10 @@ class ReadMedicationSerializer(serializers.ModelSerializer):
         model = Medication
         fields = ['created_at', 'updated_at', 'name', 'weight_gr', 'code', 'image']
 
+
+class BatteryLogsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = BatteryLogs
+        fields = ['check_at', 'drone', 'battery_level']
+        depth = 1
