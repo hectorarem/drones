@@ -45,7 +45,7 @@ class Drone(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self):
-        return self.serial_number
+        return str(self.serial_number)
 
     @property
     def enabled(self):
@@ -65,7 +65,7 @@ class Medication(models.Model):
         ordering = ('-created_at',)
 
     def __str__(self):
-        return self.name
+        return f"{self.name} - weight {self.weight_gr} gr"
 
 class DronePackage(models.Model):
     created_at = models.DateTimeField('created at', auto_now_add=True)
@@ -84,6 +84,14 @@ class DronePackage(models.Model):
     @property
     def state(self):
         return self.drone.state
+
+    @property
+    def capacity(self):
+        return self.drone.weight_limit_gr
+
+    @property
+    def weight_left(self):
+        return self.drone.weight_limit_gr - self.weight_gr
 
 class BatteryLogs(models.Model):
     check_at = models.DateTimeField('check at', auto_now_add=True)

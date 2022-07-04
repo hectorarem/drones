@@ -1,8 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from rest_framework.viewsets import ModelViewSet
-from .serializers import DroneSerializer, ReadDroneSerializer, MedicationSerializer, ReadMedicationSerializer, BatteryLogsSerializer
-from .models import Drone, Medication, BatteryLogs
+from .serializers import DroneSerializer, ReadDroneSerializer, MedicationSerializer, ReadMedicationSerializer, BatteryLogsSerializer, DronePackageSerializer, ReadDronePackageSerializer
+from .models import Drone, Medication, BatteryLogs, DronePackage
 
 class DroneViewSet(ModelViewSet):
 
@@ -49,6 +49,32 @@ class MedicationViewSet(ModelViewSet):
             'update': MedicationSerializer,
             'partial_update': MedicationSerializer,
             'destroy': MedicationSerializer
+        }
+
+    def get_serializer_class(self, *args, **kwargs):
+        try:
+            return self.serializer_action_classes[self.action]
+        except (KeyError, AttributeError):
+            return super().get_serializer_class()
+
+class DronePackageViewSet(ModelViewSet):
+
+    serializer_class = DronePackageSerializer
+
+    def get_queryset(self):
+        queryset = DronePackage.objects.all()
+        # filter = self.request.GET.get('filter', None)
+        return queryset
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.serializer_action_classes = {
+            'list': ReadDronePackageSerializer,
+            'create': DronePackageSerializer,
+            'retrieve': ReadDronePackageSerializer,
+            'update': DronePackageSerializer,
+            'partial_update': DronePackageSerializer,
+            'destroy': DronePackageSerializer
         }
 
     def get_serializer_class(self, *args, **kwargs):
