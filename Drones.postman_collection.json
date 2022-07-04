@@ -1,0 +1,771 @@
+{
+	"info": {
+		"_postman_id": "683cddb5-0c86-4c86-832e-5e6ffdd28ff3",
+		"name": "Drones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15565841"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "musala",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "software2020/*-+",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "tester@musala.com",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "musala",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "software2020/*-+",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "logout",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4Mjc2LCJpYXQiOjE2NTY5NzUwNzYsImp0aSI6IjVhOWY5NjJlNTNjMzQ0NTY4YmRkY2M0MGIxODAzNDNmIiwidXNlcl9pZCI6Mn0.74-WlmFFvEOIwRKnxO0autUswfcqQNX0d1qaWv8YvSQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "refresh_token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY1NzA2MTQ3NiwiaWF0IjoxNjU2OTc1MDc2LCJqdGkiOiJiN2ExYTQ5ZTY3ZWI0ZDFjOWIzN2NjNjY4OWU5NGRhZSIsInVzZXJfaWQiOjJ9.EcPqdnM1sUrFA7ou9c7v8_yqO79fRDWPf1hydW-H7pU",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/auth/logout/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"logout",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drones",
+			"item": [
+				{
+					"name": "List Drones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Drones",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE Drone",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "model",
+									"value": "lightweight",
+									"type": "text"
+								},
+								{
+									"key": "weight_limit_gr",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "battery_capacity",
+									"value": "70",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "idle",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Drone",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "model",
+									"value": "lightweight",
+									"type": "text"
+								},
+								{
+									"key": "weight_limit_gr",
+									"value": "500",
+									"type": "text"
+								},
+								{
+									"key": "battery_capacity",
+									"value": "70",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "loading",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/10/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Drone",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/10/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Drone-Only Battery",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "battery_capacity",
+									"value": "23",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/9/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE Drone-Only state",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "state",
+									"value": "delivered",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/9/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Medication",
+			"item": [
+				{
+					"name": "List Medication",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/medication",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"medication"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Medication",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/medication/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"medication",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE Medication",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "NewNameMedication",
+									"type": "text"
+								},
+								{
+									"key": "weight_gr",
+									"value": "499",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "NNM_01",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/hector/Pictures/gatos.jpeg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/medication/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"medication",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Medication",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/medication/11/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"medication",
+								"11",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Battery Logs",
+			"item": [
+				{
+					"name": "List Battery Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/battery-logs",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"battery-logs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Filter Battery Logs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/battery-logs?drone_id=1&start_date=2020-01-01&end_date=2022-07-21",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"battery-logs"
+							],
+							"query": [
+								{
+									"key": "drone_id",
+									"value": "1"
+								},
+								{
+									"key": "start_date",
+									"value": "2020-01-01"
+								},
+								{
+									"key": "end_date",
+									"value": "2022-07-21"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Drone-Med-Package",
+			"item": [
+				{
+					"name": "List Battery Logs Copy",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone-package",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone-package"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE Drone med package",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drone\": 9, \n    \"medications\": [1,2,3]\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone-package/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone-package",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
