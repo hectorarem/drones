@@ -49,7 +49,7 @@ class Drone(models.Model):
 
     @property
     def enabled(self):
-        return self.active and self.STATES == self.STATE_IDLE and self.battery_capacity >= 25
+        return self.active and self.state == self.STATE_IDLE and self.battery_capacity >= 25
 
 class Medication(models.Model):
     created_at = models.DateTimeField('created at', auto_now_add=True)

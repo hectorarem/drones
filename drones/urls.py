@@ -22,7 +22,7 @@ from dronesapp.views import home_render
 urlpatterns = [
     path('', home_render, name="home-render"),
     path('admin/', admin.site.urls),
-    path('api/v1/auth', include('authapp.urls'), name="api-auth"),
+    path('api/v1/auth/', include('authapp.urls'), name="api-auth"),
     path('api/v1/', include('dronesapp.urls'), name="api-drones"),
 
 ]
