@@ -66,3 +66,34 @@ class Medication(models.Model):
 
     def __str__(self):
         return self.name
+
+class DronePackage(models.Model):
+    created_at = models.DateTimeField('created at', auto_now_add=True)
+    drone = models.ForeignKey(Drone, on_delete=models.CASCADE, verbose_name='drone', null=True)
+    medications = models.ManyToManyField(Medication, verbose_name='medications')
+    weight_gr = models.FloatField('Weight (gr)', validators=[validate_weight])
+
+    class Meta:
+        verbose_name = 'drone package'
+        verbose_name_plural = 'drone packages'
+        ordering = ('-created_at',)
+
+    def __str__(self):
+        return f"{str(self.created_at)} - {self.weight_gr}"
+
+    @property
+    def state(self):
+        return self.drone.state
+
+class BatteryLogs(models.Model):
+    check_at = models.DateTimeField('check at', auto_now_add=True)
+    drone = models.ForeignKey(Drone, on_delete=models.CASCADE, verbose_name='drone')
+    battery_level = models.FloatField('battery level', validators=[validate_battery_capacity])
+
+    class Meta:
+        verbose_name = 'battery log'
+        verbose_name_plural = 'battery logs'
+        ordering = ('-check_at',)
+
+    def __str__(self):
+        return f"{str(self.check_at)} - {self.drone.serial_number} - {self.battery_level}%"
