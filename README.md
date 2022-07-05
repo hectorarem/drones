@@ -5,7 +5,7 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 1. Python >= `3.7` (local uses `3.9`)
 2. Django `4.0.4`
 3. Django Rest Framework `3.13.x`
-4. You can see more <a href="https://github.com/hectorarem/drones/blob/main/backend/requirements.txt">here</a>
+4. You can see more <a href="https://github.com/hectorarem/drones/blob/main/requirements.txt">here</a>
 
 ## First steps
 
