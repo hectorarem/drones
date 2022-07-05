@@ -19,7 +19,7 @@ To solve this requirement, in a production environment and with servers, the sol
 ## How do we run the command?
 
 1. Open a new console at the root of the project
-2. Activate the environment(We already know how in the README.md)
+2. Activate the environment(We already know how in the <a href="https://github.com/hectorarem/drones/blob/main/README.md">README.md</a>)
 3. Run the command `python manage.py run_cron_jobs`
 4. That's it.
 
