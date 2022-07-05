@@ -26,3 +26,7 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 7. Start the development server:
 
         python manage.py runserver
+        
+## For periodic task, visit this doc for more info.
+
+<a href="">PERIODIC_TASK</a>
