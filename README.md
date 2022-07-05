@@ -27,6 +27,9 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 
         python manage.py runserver
         
-## For periodic task, visit this doc for more info.
+## For API Rest documentation, visit this doc for info
+<a href="https://github.com/hectorarem/drones/blob/main/docs/API_REST.md">API REST DOCs</a>
+        
+## For periodic task, visit this doc for info.
 
-<a href="https://github.com/hectorarem/drones/blob/main/docs/PERIODIC_TASK.md">PERIODIC_TASK</a>
+<a href="https://github.com/hectorarem/drones/blob/main/docs/PERIODIC_TASK.md">PERIODIC TASK DOCs</a>
