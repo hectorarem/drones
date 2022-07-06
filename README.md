@@ -34,6 +34,21 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 7. Start the development server:
 
         python manage.py runserver
+
+### Unit Test
+System endpoints are tested. Each test is unitary for each application.
+Tested functionalities.
+1. login
+2. logout
+3. user registration
+4. Drone CRUD
+5. Medication CRUD
+6. Drone medication Package create and update
+7. Battery Logs List
+
+You can run in the project's root
+        
+     python manage.py test
         
 ## For API Rest documentation, visit this doc for info
 <a href="https://github.com/hectorarem/drones/blob/main/docs/API_REST.md">API REST DOCs</a>

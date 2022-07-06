@@ -57,7 +57,7 @@ class Medication(models.Model):
     name = models.CharField(max_length=255, validators=[validate_med_name])
     weight_gr = models.FloatField('Weight (gr)', validators=[validate_weight])
     code = models.CharField(max_length=255, validators=[validate_med_code])
-    image = models.ImageField('image', upload_to="medication/", validators=[validate_image_size])
+    image = models.ImageField('image', upload_to="medication/", null=True, validators=[validate_image_size])
 
     class Meta:
         verbose_name = 'medication'
