@@ -272,7 +272,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MDE4NTE3LCJpYXQiOjE2NTY5NzUzMTcsImp0aSI6IjkwODM2Y2UxZDBhOTRiMzQ4NjM5MjNhOTZlOTg2YTQ3IiwidXNlcl9pZCI6Mn0.zNPZ8Ha0rEMx5QOhymqTKyUNGW-a2Z2eEoQdQO9Msxw",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MTg4Njg5LCJpYXQiOjE2NTcxNDU0ODksImp0aSI6IjdhZDg4MTU3MDA5ZTQzZTZhNDg1Yjc2ZDY5MWRkZmY5IiwidXNlcl9pZCI6Mn0.hqmbDVnv0nYloIECa3S7UvllTnw8G_8E7oedykeItv8",
 								"type": "text"
 							}
 						],
@@ -296,7 +296,7 @@
 								},
 								{
 									"key": "state",
-									"value": "loading",
+									"value": "delivered",
 									"type": "text"
 								},
 								{
@@ -307,7 +307,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/drone/10/",
+							"raw": "http://127.0.0.1:8000/api/v1/drone/9/",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -320,7 +320,7 @@
 								"api",
 								"v1",
 								"drone",
-								"10",
+								"9",
 								""
 							]
 						}
@@ -759,6 +759,225 @@
 								"api",
 								"v1",
 								"drone-package",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Checking Requirements",
+			"item": [
+				{
+					"name": "Registering a drone",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MTg4MzY1LCJpYXQiOjE2NTcxNDUxNjUsImp0aSI6ImViNmE1NTExODQ2OTQ2MTBiOGVjMzhjN2MzOTAxNDBiIiwidXNlcl9pZCI6Mn0.jnr1yJ7JNuXToglVUHkozt932jWX57JfPyQ_tvSj2ao",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "model",
+									"value": "lightweight",
+									"type": "text"
+								},
+								{
+									"key": "weight_limit_gr",
+									"value": "499",
+									"type": "text"
+								},
+								{
+									"key": "battery_capacity",
+									"value": "68",
+									"type": "text"
+								},
+								{
+									"key": "state",
+									"value": "idle",
+									"type": "text"
+								},
+								{
+									"key": "active",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "loading a drone with medication items",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MTg4Njg5LCJpYXQiOjE2NTcxNDU0ODksImp0aSI6IjdhZDg4MTU3MDA5ZTQzZTZhNDg1Yjc2ZDY5MWRkZmY5IiwidXNlcl9pZCI6Mn0.hqmbDVnv0nYloIECa3S7UvllTnw8G_8E7oedykeItv8",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"drone\": 9, \n    \"medications\": [1,2,3]\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone-package/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone-package",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checking loaded medication items for a given drone",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MTg4Njg5LCJpYXQiOjE2NTcxNDU0ODksImp0aSI6IjdhZDg4MTU3MDA5ZTQzZTZhNDg1Yjc2ZDY5MWRkZmY5IiwidXNlcl9pZCI6Mn0.hqmbDVnv0nYloIECa3S7UvllTnw8G_8E7oedykeItv8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone-package?drone_id=9&delivered=0",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone-package"
+							],
+							"query": [
+								{
+									"key": "drone_id",
+									"value": "9"
+								},
+								{
+									"key": "delivered",
+									"value": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checking available drones for loading",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MTg4Njg5LCJpYXQiOjE2NTcxNDU0ODksImp0aSI6IjdhZDg4MTU3MDA5ZTQzZTZhNDg1Yjc2ZDY5MWRkZmY5IiwidXNlcl9pZCI6Mn0.hqmbDVnv0nYloIECa3S7UvllTnw8G_8E7oedykeItv8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone?available=true",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone"
+							],
+							"query": [
+								{
+									"key": "available",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "check drone battery level for a given drone",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjU3MTg4Njg5LCJpYXQiOjE2NTcxNDU0ODksImp0aSI6IjdhZDg4MTU3MDA5ZTQzZTZhNDg1Yjc2ZDY5MWRkZmY5IiwidXNlcl9pZCI6Mn0.hqmbDVnv0nYloIECa3S7UvllTnw8G_8E7oedykeItv8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/drone/1/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"drone",
+								"1",
 								""
 							]
 						}

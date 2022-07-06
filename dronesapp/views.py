@@ -10,7 +10,11 @@ class DroneViewSet(ModelViewSet):
 
     def get_queryset(self):
         queryset = Drone.objects.all()
-        # filter = self.request.GET.get('filter', None)
+        available = self.request.GET.get('available', None)
+        if available == 'true':
+            queryset = [obj for obj in queryset if obj.enabled]
+        if available == 'false':
+            queryset = [obj for obj in queryset if not obj.enabled]
         return queryset
 
     def __init__(self, *args, **kwargs):
