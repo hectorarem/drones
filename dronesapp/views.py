@@ -63,7 +63,12 @@ class DronePackageViewSet(ModelViewSet):
 
     def get_queryset(self):
         queryset = DronePackage.objects.all()
-        # filter = self.request.GET.get('filter', None)
+        drone_id = self.request.GET.get('drone_id', None)
+        delivered = self.request.GET.get('delivered', None)
+        if drone_id:
+            queryset = queryset.filter(drone_id=drone_id)
+        if delivered:
+            queryset = queryset.filter(delivered=delivered)
         return queryset
 
     def __init__(self, *args, **kwargs):

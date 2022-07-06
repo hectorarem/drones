@@ -47,6 +47,14 @@ class Drone(models.Model):
     def __str__(self):
         return str(self.serial_number)
 
+    def save(self):
+        if self.state == self.STATE_DELIVERED:
+            for dp in self.dronepackage_set.filter(delivered=False):
+                dp.delivered = True
+                dp.save()
+        return super(Drone, self).save()
+
+
     @property
     def enabled(self):
         return self.active and self.state == self.STATE_IDLE and self.battery_capacity >= 25
@@ -72,6 +80,7 @@ class DronePackage(models.Model):
     drone = models.ForeignKey(Drone, on_delete=models.CASCADE, verbose_name='drone', null=True)
     medications = models.ManyToManyField(Medication, verbose_name='medications')
     weight_gr = models.FloatField('Weight (gr)', validators=[validate_weight])
+    delivered = models.BooleanField('Delivered', default=False)
 
     class Meta:
         verbose_name = 'drone package'
@@ -81,9 +90,6 @@ class DronePackage(models.Model):
     def __str__(self):
         return f"{str(self.created_at)} - {self.weight_gr}"
 
-    @property
-    def state(self):
-        return self.drone.state
 
     @property
     def capacity(self):

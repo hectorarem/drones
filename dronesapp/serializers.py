@@ -65,7 +65,7 @@ class ReadDronePackageSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DronePackage
-        fields = ['created_at', 'drone', 'medications', 'weight_gr', 'state', 'weight_left']
+        fields = ['created_at', 'drone', 'medications', 'weight_gr', 'delivered', 'weight_left']
         depth = 1
 
 
