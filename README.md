@@ -11,11 +11,11 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 
 1. Create a new virtual environment:
 
-        python3 -m venv env
+        python3 -m venv venv
 
 2. Activate the environment:
 
-        source env/bin/activate
+        source venv/bin/activate
 
 3. The environment has to be activated for the rest of the commands.
 
@@ -30,6 +30,10 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 6. Create superuser:
 
         python manage.py createsuperuser
+        
+   user created
+        
+        user:musala password:software2020/*-+
 
 7. Start the development server:
 
@@ -37,7 +41,8 @@ We have a fleet of **10 drones**. A drone is capable of carrying de
 
 ### Unit Test
 System endpoints are tested. Each test is unitary for each application.
-Tested functionalities.
+
+Tested functionalities and project requirements.
 1. login
 2. logout
 3. user registration
