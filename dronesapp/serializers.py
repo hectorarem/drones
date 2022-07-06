@@ -8,6 +8,15 @@ class DroneSerializer(serializers.ModelSerializer):
         model = Drone
         fields = ['model', 'weight_limit_gr', 'battery_capacity', 'state', 'active']
 
+    def update(self, instance, validated_data):
+
+        if validated_data['state'] == Drone.STATE_LOADING and instance.battery_capacity < 25:
+            raise serializers.ValidationError({
+                'msg': f"Error! Drone have low battery (-25) with {instance.battery_capacity}%"
+            })
+        return super().update(instance, validated_data)
+
+
 
 class ReadDroneSerializer(serializers.ModelSerializer):
 
