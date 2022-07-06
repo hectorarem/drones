@@ -3,7 +3,7 @@ import base64
 from django.test import TestCase
 from django.contrib.auth.models import User
 from django.test import Client
-from .models import Drone, Medication
+from .models import Drone, Medication, DronePackage
 from io import BytesIO
 from PIL import Image
 
@@ -131,3 +131,116 @@ class DroneTestCase(TestCase):
             self.assertEqual(delete_med.status_code, 204)
             # confirm delete
             self.assertEqual(Medication.objects.count(), med_count)
+
+    def test_drone_package(self):
+        login = self.login()
+        if login['access']:
+            access = login['access']
+            bearer = f"Bearer {access}"
+
+            # CREATE
+            data = {
+                "drone": "8",
+                "medications": [1, 2, 3],
+            }
+            new_drone_package = c.post(self.api_drone_package, data=data, HTTP_AUTHORIZATION=bearer, content_type='application/json')
+            self.assertEqual(new_drone_package.status_code, 201)
+
+            # confirm create
+            self.assertEqual(DronePackage.objects.count(), 1)
+
+            last_drone_package = DronePackage.objects.last()
+
+            # Read
+            read_drone_package = c.get(f'{self.api_drone_package}{last_drone_package.pk}/', HTTP_AUTHORIZATION=bearer)
+            self.assertEqual(read_drone_package.status_code, 200)
+
+            # Update
+            data = {
+                "drone": "8",
+                "medications": [4, 5, 6],
+            }
+
+            update_drone_package = c.put(f'{self.api_drone_package}{last_drone_package.pk}/', data=data, HTTP_AUTHORIZATION=bearer,
+                               content_type='application/json')
+            self.assertEqual(update_drone_package.status_code, 200)
+
+            # Check if package change
+            updated_drone_package = DronePackage.objects.get(pk=last_drone_package.pk)
+            self.assertNotEqual(last_drone_package.weight_left, updated_drone_package.weight_left)
+
+            # Delete
+            delete_drone_package = c.delete(f'{self.api_drone_package}{last_drone_package.pk}/', HTTP_AUTHORIZATION=bearer)
+            self.assertEqual(delete_drone_package.status_code, 204)
+            # confirm delete
+            self.assertEqual(DronePackage.objects.count(), 0)
+
+    def test_drone_package_limit(self):
+        login = self.login()
+        if login['access']:
+            access = login['access']
+            bearer = f"Bearer {access}"
+
+            # CREATE
+            data = {
+                "drone": "8",
+                "medications": [1, 2, 3, 4, 5, 6],
+            }
+            new_drone_package = c.post(self.api_drone_package, data=data, HTTP_AUTHORIZATION=bearer, content_type='application/json')
+            # Example response {'msg': 'Error! Drone accept 450.0 gr and you are puting 603.0 gr'}
+            self.assertEqual(new_drone_package.status_code, 400)
+
+    def test_drones_form_validations(self):
+        login = self.login()
+        if login['access']:
+            access = login['access']
+            bearer = f"Bearer {access}"
+
+            # percent validation
+            data = {
+                "model": Drone.MODEL_LIGHTWEIGHT,
+                "weight_limit_gr": 50,
+                "battery_capacity": 197,
+                "state": Drone.STATE_IDLE
+            }
+            new_drone = c.post(self.api_drones, data=data, HTTP_AUTHORIZATION=bearer)
+            # Example response {'battery_capacity': ['Battery percent between 0 and 100']}
+            self.assertEqual(new_drone.status_code, 400)
+
+            # weight and - percent validation
+            data = {
+                "model": Drone.MODEL_LIGHTWEIGHT,
+                "weight_limit_gr": 1000,
+                "battery_capacity": -95,
+                "state": Drone.STATE_IDLE
+            }
+            new_drone = c.post(self.api_drones, data=data, HTTP_AUTHORIZATION=bearer)
+            # Example response {'weight_limit_gr': ['Weight limit between 0.x and 500 gr'], 'battery_capacity': ['Battery percent between 0 and 100']}
+            self.assertEqual(new_drone.status_code, 400)
+
+    def test_medication_form_validation(self):
+        login = self.login()
+        if login['access']:
+            access = login['access']
+            bearer = f"Bearer {access}"
+
+            # Name Validation
+            data = {
+                "name": "name example123",
+                "weight_gr": 10,
+                "code": "NE123",
+            }
+            new_med = c.post(self.api_medication, data=data, HTTP_AUTHORIZATION=bearer)
+            # Example response {'name': ["Allow only letters, numbers, '-', and '_'"]}
+            self.assertEqual(new_med.status_code, 400)
+
+            # code Validation
+            data = {
+                "name": "name-example123",
+                "weight_gr": 10,
+                "code": "NEa123",
+            }
+            new_med = c.post(self.api_medication, data=data, HTTP_AUTHORIZATION=bearer)
+            # Example response 'code': ['Allow only upper case letters, underscore, and numbers']}
+            self.assertEqual(new_med.status_code, 400)
+

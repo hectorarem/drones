@@ -43,8 +43,11 @@ Tested functionalities.
 3. user registration
 4. Drone CRUD
 5. Medication CRUD
-6. Drone medication Package create and update
+6. Drone medication Package CRUD
 7. Battery Logs List
+8. Drone medication package limit (500 gr)
+9. Drone form validations
+10. Medication form validations
 
 You can run in the project's root
         

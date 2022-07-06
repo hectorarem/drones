@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 
 def validate_weight_limit(value):
-    if 500 < value <= 0:
+    if value > 500 or value <= 0:
         raise ValidationError("Weight limit between 0.x and 500 gr")
     else:
         return value
@@ -17,7 +17,7 @@ def validate_weight(value):
 
 
 def validate_battery_capacity(value):
-    if 100 < value < 0:
+    if value > 100 or value < 0:
         raise ValidationError("Battery percent between 0 and 100")
     else:
         return value
